@@ -25,9 +25,9 @@ public class Main {
                         Thread.currentThread().interrupt();
                     }
                 }
-                pongWait = false;
 
                 System.out.println("Ping");
+                pongWait = false;
                 notifyAll();
             }
         }
@@ -43,9 +43,8 @@ public class Main {
                         Thread.currentThread().interrupt();
                     }
                 }
-                pongWait = true;
-
                 System.out.println("Pong");
+                pongWait = true;
                 notifyAll();
             }
         }
