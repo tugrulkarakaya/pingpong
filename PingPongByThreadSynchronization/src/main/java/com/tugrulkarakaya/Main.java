@@ -7,11 +7,11 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
 
-        Thread ping = new Thread(main.pinger);
-        Thread pong = new Thread(main.ponger);
+        Thread pingThread = new Thread(main.pinger);
+        Thread ponhThread = new Thread(main.ponger);
 
-        ping.start();
-        pong.start();
+        pingThread.start();
+        ponhThread.start();
     }
 
 
@@ -29,7 +29,6 @@ public class Main {
 
                 System.out.println("Ping");
                 notifyAll();
-
             }
         }
     };
@@ -46,8 +45,8 @@ public class Main {
                 }
                 pongWait = true;
 
-                notifyAll();
                 System.out.println("Pong");
+                notifyAll();
             }
         }
     };
