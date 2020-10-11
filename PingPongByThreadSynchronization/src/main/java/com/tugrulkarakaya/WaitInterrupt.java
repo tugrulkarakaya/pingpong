@@ -1,14 +1,14 @@
 package com.tugrulkarakaya;
 
-public class Main {
+public class WaitInterrupt {
 
     private boolean pongWait = true;
 
     public static void main(String[] args) {
-        Main main = new Main();
+        WaitInterrupt waitInterrupt = new WaitInterrupt();
 
-        Thread pingThread = new Thread(main.pinger);
-        Thread ponhThread = new Thread(main.ponger);
+        Thread pingThread = new Thread(waitInterrupt.pinger);
+        Thread ponhThread = new Thread(waitInterrupt.ponger);
 
         pingThread.start();
         ponhThread.start();

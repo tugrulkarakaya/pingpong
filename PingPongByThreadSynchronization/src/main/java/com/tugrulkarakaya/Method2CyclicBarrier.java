@@ -2,14 +2,14 @@ package com.tugrulkarakaya;
 
 import java.util.concurrent.*;
 
-public class Main {
+public class Method2CyclicBarrier {
 
     ExecutorService service;
     CyclicBarrier c1 = new CyclicBarrier(2);
     CyclicBarrier c2 = new CyclicBarrier(2);
 
     public static void main(String[] args) {
-        Main m = new Main();
+        Method2CyclicBarrier m = new Method2CyclicBarrier();
         m.runPingPong();
     }
 
