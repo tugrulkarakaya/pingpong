@@ -28,11 +28,14 @@ public class Method4Semaphore {
         while(true) {
             try {
                 semaphorePing.acquire();
+                System.out.println("PING");
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            System.out.println("PING");
-            semaphorePong.release();
+            finally {
+                semaphorePong.release();
+            }
+
         }
     }
 
@@ -40,11 +43,13 @@ public class Method4Semaphore {
         while(true) {
             try {
                 semaphorePong.acquire();
+                System.out.println("PONG");
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            System.out.println("PONG");
-            semaphorePing.release();
+            finally {
+                semaphorePing.release();
+            }
         }
     }
 }
