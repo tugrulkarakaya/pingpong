@@ -4,14 +4,19 @@ public class Method1WaitInterrupt {
 
     private boolean pongWait = true;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Method1WaitInterrupt waitInterrupt = new Method1WaitInterrupt();
 
         Thread pingThread = new Thread(waitInterrupt.pinger);
-        Thread ponhThread = new Thread(waitInterrupt.ponger);
+        Thread pongThread = new Thread(waitInterrupt.ponger);
 
         pingThread.start();
-        ponhThread.start();
+        pongThread.start();
+
+        //stop threads after 5 seconds
+        Thread.sleep(5*1000);
+        pingThread.interrupt();
+        pongThread.interrupt();
     }
 
 
