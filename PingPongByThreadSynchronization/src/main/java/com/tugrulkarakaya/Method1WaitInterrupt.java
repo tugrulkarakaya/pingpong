@@ -16,7 +16,7 @@ public class Method1WaitInterrupt {
 
 
     Runnable pinger = ()->{
-        for(;;) {
+        while(!Thread.currentThread().isInterrupted()) {
             synchronized (this) {
                 while (!pongWait) {
                     try {
@@ -34,7 +34,7 @@ public class Method1WaitInterrupt {
     };
 
     Runnable ponger = ()->{
-        for(;;) {
+        while(!Thread.currentThread().isInterrupted()) {
             synchronized (this) {
                 while (pongWait) {
                     try {

@@ -41,12 +41,12 @@ public class Method2CyclicBarrier {
             try {
                 c1.await();
                 c2.await();
+                System.out.println("PONG");
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             } catch(BrokenBarrierException ex){
 
             }
-            System.out.println("PONG");
         }
     }
 }
