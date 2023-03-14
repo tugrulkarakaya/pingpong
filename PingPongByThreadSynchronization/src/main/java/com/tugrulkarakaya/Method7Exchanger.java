@@ -20,7 +20,7 @@ class Ping implements Runnable {
     public void run() {
         try {
             while (true) {
-                exchanger.exchange(false); //it gets true from PONG and sends false to not to allow it to print PONG
+                exchanger.exchange(false); //it gets true from PONG and sends false to not allow it to print PONG but it will wait pong be written after first iteration
                 System.out.println("PING");
                 exchanger.exchange(true);
             }
@@ -39,8 +39,7 @@ class Pong implements Runnable {
     public void run() {
         try {
             while (true) {
-                boolean printAllowed = exchanger.exchange(true); //this allows PING to print PING but it will get false so it wont write PONG up until it gets trues from exchanger
-                if(printAllowed) {
+                if(exchanger.exchange(true)) { //this allows PING to print PING, but it will get false so it won't write PONG up until it gets trues from exchanger
                     System.out.println("PONG");
                     exchanger.exchange(true);
                 }
