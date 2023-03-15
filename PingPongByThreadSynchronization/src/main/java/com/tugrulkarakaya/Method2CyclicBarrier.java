@@ -15,13 +15,13 @@ public class Method2CyclicBarrier {
 
     public void runPingPong(){
         service = Executors.newFixedThreadPool(2);
-            service.submit(() -> this.printPing(c1, c2));
-            service.submit(() -> this.printPong(c1, c2));
+            service.submit(this::printPing);
+            service.submit(this::printPong);
     }
 
 
 
-    public void printPing(CyclicBarrier c1, CyclicBarrier c2) {
+    public void printPing() {
         while(!Thread.currentThread().isInterrupted()) {
             try {
                 c1.await();
@@ -36,7 +36,7 @@ public class Method2CyclicBarrier {
         }
     }
 
-    public void printPong(CyclicBarrier c1, CyclicBarrier c2){
+    public void printPong(){
         while(!Thread.currentThread().isInterrupted()) {
             try {
                 c1.await();
