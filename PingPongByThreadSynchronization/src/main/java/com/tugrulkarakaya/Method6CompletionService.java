@@ -13,7 +13,7 @@ public class Method6CompletionService {
         return null;
     };
 
-    Callable  callablePing = () -> {
+    Callable<Void> callablePing = () -> {
         System.out.println("Ping");
         return null;
     };

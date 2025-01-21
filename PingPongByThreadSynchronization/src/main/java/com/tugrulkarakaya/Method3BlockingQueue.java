@@ -3,8 +3,8 @@ package com.tugrulkarakaya;
 import java.util.concurrent.*;
 
 public class Method3BlockingQueue {
-    BlockingQueue<Object> pingQueue = new LinkedBlockingQueue(1);
-    BlockingQueue pongQueue = new LinkedBlockingQueue<>(1);
+    BlockingQueue<Object> pingQueue = new LinkedBlockingQueue<>(1);
+    BlockingQueue<Object> pongQueue = new LinkedBlockingQueue<>(1);
 
     public static void main(String[] args) {
         Method3BlockingQueue producerConsumer = new Method3BlockingQueue();
