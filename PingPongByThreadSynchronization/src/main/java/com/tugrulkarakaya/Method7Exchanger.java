@@ -11,6 +11,7 @@ public class Method7Exchanger {
         pongThread.start();
     }
 }
+
 class Ping implements Runnable {
     private final Exchanger<Boolean> exchanger;
     public Ping(Exchanger<Boolean> exchanger) {
@@ -20,9 +21,10 @@ class Ping implements Runnable {
     public void run() {
         try {
             while (true) {
-                exchanger.exchange(false); //it gets true from PONG and sends false to not allow it to print PONG but it will wait pong be written after first iteration
                 System.out.println("PING");
+                // Exchange after printing PING, sending true to allow PONG to print
                 exchanger.exchange(true);
+                Thread.sleep(100); // Optional: Add small delay for readability
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -39,11 +41,10 @@ class Pong implements Runnable {
     public void run() {
         try {
             while (true) {
-                if(exchanger.exchange(true)) { //this allows PING to print PING, but it will get false so it won't write PONG up until it gets trues from exchanger
-                    System.out.println("PONG");
-                    exchanger.exchange(true);
-                }
-
+                // Wait for signal from PING
+                exchanger.exchange(false);
+                System.out.println("PONG");
+                Thread.sleep(100); // Optional: Add small delay for readability
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
